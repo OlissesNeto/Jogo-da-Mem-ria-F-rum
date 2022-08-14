@@ -48,3 +48,8 @@ body {
     transform: rotateY(180deg);
   }
 
+h1 {
+    text-align:center;
+    color: white;
+}
+

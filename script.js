@@ -4,6 +4,8 @@ let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
 
+var pontos = 0;
+
 function flipCard() {
   if (lockBoard) return;
   if (this === firstCard) return;
@@ -23,20 +25,29 @@ function flipCard() {
 
 function checkForMatch() {
   let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
-
+    
   isMatch ? disableCards() : unflipCards();
 }
 
 function disableCards() {
+    alteraPontuacao();
   firstCard.removeEventListener('click', flipCard);
   secondCard.removeEventListener('click', flipCard);
 
   resetBoard();
 }
 
+function alteraPontuacao(){
+    
+        
+        pontos = pontos + 1;
+        document.getElementById('ponto').innerHTML = " Pontuação = Voce acertou " + pontos;
+       
+      
+}
 function unflipCards() {
   lockBoard = true;
-
+    
   setTimeout(() => {
     firstCard.classList.remove('flip');
     secondCard.classList.remove('flip');
